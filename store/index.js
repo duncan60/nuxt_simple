@@ -1,7 +1,25 @@
+import Vuex from 'vuex';
 new Vuex.Store({
-    actions: {
-        nuxtServerInit ({ commit }, { req }) {
-          console.log('nuxtServerInit');
-        }
-      }
-  })
+	state: () => ({}),
+  mutations: {},
+  actions: {
+    nuxtServerInit ({ commit }, { req }) {
+      console.log('store nuxtServerInit');
+      // if (req.session.user) {
+      //   commit('user', req.session.user)
+      // }
+    }
+  },
+	modules: {
+		todos: {
+		  namespaced: true,
+		  state: () => ({}),
+		  mutations: {},
+		  actions: {
+				nuxtServerInit ({ commit }, { req }) {
+				  console.log('modules nuxtServerInit');
+				}
+			}
+		}
+	}
+})
