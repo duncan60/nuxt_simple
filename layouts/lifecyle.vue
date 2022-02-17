@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>layout/blog wrapper </div>
+    <div>layout/lifescyle wrapper </div>
     <Nuxt />
   </div>
 </template>

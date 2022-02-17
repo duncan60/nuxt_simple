@@ -1,5 +1,6 @@
 export default {
   target: 'static',
+  serverMiddleware: ['~/server-middleware/logger'],
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'nuxt_simple',
@@ -38,5 +39,10 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+  },
+  generate: {
+    routes() {
+      console.log('config generate');
+    }
   }
 }
