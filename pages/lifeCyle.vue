@@ -1,5 +1,7 @@
 <template>
   <div>
+    <p v-if="$fetchState.pending">Fetching mountains...</p>
+    <p v-else-if="$fetchState.error">An error occurred :(</p>
     <h2>{{ serverData.content }}</h2>
     <p>{{ serverData.date }}</p>
     <p>{{ serverData.query}}</p>
@@ -12,7 +14,7 @@ export default {
   name: 'LifeCyclePage',
   layout: 'lifecyle',
   middleware({ store, redirect }) {
-    console.log('life cycle :::: middleware');
+    console.log('[life cycle] :::: middleware');
     // retrieving keys via object destructuring
     // const isAuthenticated = store.state.authenticated
     // if (!isAuthenticated) {
@@ -20,7 +22,7 @@ export default {
     // }
   },
   async asyncData({ query, params, $http, error }) {
-    console.log('life cycle :::: asyncData');
+    console.log('[life cycle] :::: asyncData');
     try {
       const serverData = {
         content: 'life cyle page content',
@@ -34,11 +36,25 @@ export default {
       error(e) 
     }
   },
+  async fetch() {
+    this.fetchData = '[fetchOnServer] test fetch';
+    console.log('[life cycle] :::: fetch');
+  },
+  fetchOnServer: true,
+  fetchKey(getCounter) {
+    console.log('[life cycle] :::: fetchKey');
+    return 'fetchKey-counter' + getCounter('sidebar');
+  },
+  data: () => ({
+    fetchData: null,
+  }),
   beforeMount () {
-    console.log('life cycle :::: beforeMount');
+    console.log('[life cycle] :::: beforeMount');
   },
   mounted () {
-    console.log('life cycle :::: mounted');
+    console.log('[life cycle] :::: mounted ,local data :', this.fetchData);
+    console.log('_fetchKey:', this._fetchKey);
+    console.log('this.$fetchState:', this.$fetchState);
   }
 }
 </script>

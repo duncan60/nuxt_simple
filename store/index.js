@@ -4,7 +4,7 @@ new Vuex.Store({
   mutations: {},
   actions: {
     nuxtServerInit ({ commit }, { req }) {
-      console.log('store nuxtServerInit');
+      console.log('store action nuxtServerInit');
       // if (req.session.user) {
       //   commit('user', req.session.user)
       // }
@@ -17,7 +17,7 @@ new Vuex.Store({
 		  mutations: {},
 		  actions: {
 				nuxtServerInit ({ commit }, { req }) {
-				  console.log('modules nuxtServerInit');
+				  console.log('modules actions nuxtServerInit');
 				}
 			}
 		}
